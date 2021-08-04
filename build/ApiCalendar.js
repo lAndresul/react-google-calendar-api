@@ -252,7 +252,8 @@ var ApiCalendar = function () {
       if (this.gapi) {
         return this.gapi.client.calendar.events.insert({
           calendarId: calendarId,
-          resource: event
+          resource: event,
+          conferenceDataVersion: 1,
         });
       } else {
         console.log('Error: gapi is not loaded use onLoad before please.');

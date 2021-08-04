@@ -209,14 +209,16 @@ class ApiCalendar {
    * @param {string} calendarId for the event.
    * @param {object} event with start and end dateTime
    * @param {string} sendUpdates Acceptable values are: "all", "externalOnly", "none"
+   * @param {number} conferenceDataVersion Acceptable values are: 0, 1
    * @returns {any}
    */
-  public createEvent(event: object, calendarId: string = this.calendar, sendUpdates: string = 'none' ): any {
+  public createEvent(event: object, calendarId: string = this.calendar, sendUpdates: string = 'none', conferenceDataVersion: number = 0 ): any {
     if (this.gapi) {
       return this.gapi.client.calendar.events.insert({
         calendarId: calendarId,
         resource: event,
         sendUpdates: sendUpdates,
+        conferenceDataVersion: conferenceDataVersion,
       });
     } else {
       console.log('Error: this.gapi not loaded');
